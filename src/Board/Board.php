@@ -28,9 +28,17 @@ final class Board
     }
 
     /**
+     * @return array<int, Game>
+     */
+    public function gamesOriginal(): array
+    {
+        return $this->games;
+    }
+
+    /**
      * @return array<Game>
      */
-    public function games(): array
+    public function gamesSorted(): array
     {
         $gamesWithIds = \array_map(
             static fn (int $id, Game $game): array => [$id, $game],

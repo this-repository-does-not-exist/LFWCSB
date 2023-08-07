@@ -34,6 +34,6 @@ final readonly class BoardManager implements BoardManagerInterface
 
     public function getGames(): array
     {
-        return $this->boardStorage->restore()->games();
+        return $this->boardStorage->restore()->gamesSorted();
     }
 }

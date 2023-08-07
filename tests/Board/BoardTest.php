@@ -15,12 +15,14 @@ final class BoardTest extends TestCase
     public function testAddingAndGettingGame(): void
     {
         $board = new Board();
-        self::assertCount(0, $board->games());
+        self::assertCount(0, $board->gamesOriginal());
+        self::assertCount(0, $board->gamesSorted());
 
         $board->addGame($game1 = new Game('Arg', 'Bra'));
         $board->addGame($game2 = new Game('Cro', 'Den'));
         $board->addGame($game3 = new Game('Eng', 'Fra'));
-        self::assertCount(3, $board->games());
+        self::assertCount(3, $board->gamesOriginal());
+        self::assertCount(3, $board->gamesSorted());
 
         self::assertSame($game3, $board->getGame('Eng', 'Fra'));
         self::assertSame($game2, $board->getGame('Cro', 'Den'));
@@ -90,7 +92,7 @@ final class BoardTest extends TestCase
 
         $board->removeGame('Cro', 'Den');
 
-        self::assertCount(2, $board->games());
+        self::assertCount(2, $board->gamesOriginal());
         self::assertSame($game1, $board->getGame('Arg', 'Bra'));
         self::assertSame($game3, $board->getGame('Eng', 'Fra'));
     }
@@ -117,8 +119,13 @@ final class BoardTest extends TestCase
         $board->addGame($game3 = new Game('Ita', 'Jpn', 2, 1));
 
         self::assertSame(
+            [$game7, $game1, $game0, $game9, $game3],
+            $board->gamesOriginal(),
+        );
+
+        self::assertSame(
             [$game9, $game7, $game3, $game1, $game0],
-            $board->games(),
+            $board->gamesSorted(),
         );
     }
 
@@ -132,8 +139,13 @@ final class BoardTest extends TestCase
         $board->addGame($game2c = new Game('Ita', 'Jpn', 1, 1));
 
         self::assertSame(
+            [$game2a, $game0, $game2b, $game7, $game2c],
+            $board->gamesOriginal(),
+        );
+
+        self::assertSame(
             [$game7, $game2c, $game2b, $game2a, $game0],
-            $board->games(),
+            $board->gamesSorted(),
         );
     }
 
@@ -148,7 +160,7 @@ final class BoardTest extends TestCase
 
         self::assertSame(
             [$gameUruguayItaly, $gameSpainBrazil, $gameMexicoCanada, $gameArgentinaAustralia, $gameGermanyFrance],
-            $board->games(),
+            $board->gamesSorted(),
         );
     }
 }
