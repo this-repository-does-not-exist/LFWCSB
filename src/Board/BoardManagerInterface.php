@@ -8,6 +8,8 @@ interface BoardManagerInterface
 {
     public function startGame(string $homeTeam, string $awayTeam): void;
 
+    public function finishGame(string $homeTeam, string $awayTeam): void;
+
     /**
      * @return array<Game>
      */

@@ -15,6 +15,7 @@ final class Application extends SymfonyApplication
         $boardManager = (new BoardManagerFactory())->create();
 
         $this->add(new StartGameCommand($boardManager));
+        $this->add(new FinishGameCommand($boardManager));
         $this->add(new SummaryCommand($boardManager));
     }
 
