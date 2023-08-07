@@ -16,6 +16,7 @@ final class Application extends SymfonyApplication
 
         $this->add(new StartGameCommand($boardManager));
         $this->add(new FinishGameCommand($boardManager));
+        $this->add(new UpdateScoreCommand($boardManager));
         $this->add(new SummaryCommand($boardManager));
     }
 

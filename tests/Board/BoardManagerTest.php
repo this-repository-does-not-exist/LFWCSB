@@ -72,4 +72,42 @@ final class BoardManagerTest extends TestCase
             \serialize($this->boardManager->getGames()),
         );
     }
+
+    public function testGameFullCycle(): void
+    {
+        self::assertCount(0, $this->boardManager->getGames());
+
+        $this->boardManager->startGame('Arg', 'Bra');
+        self::assertSame(
+            \serialize([new Game('Arg', 'Bra', 0, 0)]),
+            \serialize($this->boardManager->getGames()),
+        );
+
+        $this->boardManager->updateScore('Arg', 'Bra', 2, 1);
+        self::assertSame(
+            \serialize([new Game('Arg', 'Bra', 2, 1)]),
+            \serialize($this->boardManager->getGames()),
+        );
+
+        $this->boardManager->updateScore('Arg', 'Bra', 2, 3);
+        self::assertSame(
+            \serialize([new Game('Arg', 'Bra', 2, 3)]),
+            \serialize($this->boardManager->getGames()),
+        );
+
+        $this->boardManager->updateScore('Arg', 'Bra', 4, 3);
+        self::assertSame(
+            \serialize([new Game('Arg', 'Bra', 4, 3)]),
+            \serialize($this->boardManager->getGames()),
+        );
+
+        $this->boardManager->updateScore('Arg', 'Bra', 5, 5);
+        self::assertSame(
+            \serialize([new Game('Arg', 'Bra', 5, 5)]),
+            \serialize($this->boardManager->getGames()),
+        );
+
+        $this->boardManager->finishGame('Arg', 'Bra');
+        self::assertCount(0, $this->boardManager->getGames());
+    }
 }

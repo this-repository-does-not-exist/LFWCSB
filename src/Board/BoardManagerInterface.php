@@ -10,6 +10,8 @@ interface BoardManagerInterface
 
     public function finishGame(string $homeTeam, string $awayTeam): void;
 
+    public function updateScore(string $homeTeam, string $awayTeam, int $homeTeamScore, int $awayTeamScore): void;
+
     /**
      * @return array<Game>
      */

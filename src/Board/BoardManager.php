@@ -25,6 +25,13 @@ final readonly class BoardManager implements BoardManagerInterface
         $this->boardStorage->store($board);
     }
 
+    public function updateScore(string $homeTeam, string $awayTeam, int $homeTeamScore, int $awayTeamScore): void
+    {
+        $board = $this->boardStorage->restore();
+        $board->getGame($homeTeam, $awayTeam)->updateScore($homeTeamScore, $awayTeamScore);
+        $this->boardStorage->store($board);
+    }
+
     public function getGames(): array
     {
         return $this->boardStorage->restore()->games();
