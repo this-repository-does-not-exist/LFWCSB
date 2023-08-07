@@ -10,10 +10,11 @@ final class Application extends SymfonyApplication
 {
     public function __construct()
     {
-        parent::__construct('Live Football World Cup Score Board', 'dev');
+        parent::__construct(SummaryCommand::BOARD_NAME, 'dev');
 
         $boardManager = (new BoardManagerFactory())->create();
 
+        $this->add(new StartGameCommand($boardManager));
         $this->add(new SummaryCommand($boardManager));
     }
 

@@ -43,4 +43,27 @@ final class BoardManagerTest extends TestCase
             \serialize($this->boardManager->getGames()),
         );
     }
+
+    public function testStartingGame(): void
+    {
+        self::assertCount(0, $this->boardManager->getGames());
+
+        $this->boardManager->startGame('Arg', 'Bra');
+        self::assertSame(
+            \serialize([new Game('Arg', 'Bra')]),
+            \serialize($this->boardManager->getGames()),
+        );
+
+        $this->boardManager->startGame('Cro', 'Den');
+        self::assertSame(
+            \serialize([new Game('Cro', 'Den'), new Game('Arg', 'Bra')]),
+            \serialize($this->boardManager->getGames()),
+        );
+
+        $this->boardManager->startGame('Eng', 'Fra');
+        self::assertSame(
+            \serialize([new Game('Eng', 'Fra'), new Game('Cro', 'Den'), new Game('Arg', 'Bra')]),
+            \serialize($this->boardManager->getGames()),
+        );
+    }
 }

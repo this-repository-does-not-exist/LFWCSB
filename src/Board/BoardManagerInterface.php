@@ -6,6 +6,8 @@ use App\Game\Game;
 
 interface BoardManagerInterface
 {
+    public function startGame(string $homeTeam, string $awayTeam): void;
+
     /**
      * @return array<Game>
      */
