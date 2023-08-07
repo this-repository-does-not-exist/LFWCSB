@@ -27,6 +27,7 @@ final class GameTest extends TestCase
         self::assertSame('Bra', $game->awayTeam());
         self::assertSame(0, $game->homeTeamScore());
         self::assertSame(0, $game->awayTeamScore());
+        self::assertSame(0, $game->totalScore());
     }
 
     /**
@@ -42,11 +43,13 @@ final class GameTest extends TestCase
 
         self::assertSame($homeTeamScoreBefore, $game->homeTeamScore());
         self::assertSame($awayTeamScoreBefore, $game->awayTeamScore());
+        self::assertSame($homeTeamScoreBefore + $awayTeamScoreBefore, $game->totalScore());
 
         $game->updateScore($homeTeamScoreAfter, $awayTeamScoreAfter);
 
         self::assertSame($homeTeamScoreAfter, $game->homeTeamScore());
         self::assertSame($awayTeamScoreAfter, $game->awayTeamScore());
+        self::assertSame($homeTeamScoreAfter + $awayTeamScoreAfter, $game->totalScore());
     }
 
     /**
@@ -75,6 +78,7 @@ final class GameTest extends TestCase
 
         self::assertSame($homeTeamScoreBefore, $game->homeTeamScore());
         self::assertSame($awayTeamScoreBefore, $game->awayTeamScore());
+        self::assertSame($homeTeamScoreBefore + $awayTeamScoreBefore, $game->totalScore());
 
         $this->expectException(GameException::class);
         $this->expectExceptionMessage($exceptionMessage);

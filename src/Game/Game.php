@@ -25,7 +25,7 @@ final class Game
             throw new GameException('Cannot decrease score of away team!');
         }
 
-        if ($homeTeamScore + $awayTeamScore === $this->homeTeamScore + $this->awayTeamScore) {
+        if ($homeTeamScore + $awayTeamScore === $this->totalScore()) {
             throw new GameException('Cannot update with the same scores!');
         }
 
@@ -51,5 +51,10 @@ final class Game
     public function awayTeamScore(): int
     {
         return $this->awayTeamScore;
+    }
+
+    public function totalScore(): int
+    {
+        return $this->homeTeamScore + $this->awayTeamScore;
     }
 }
