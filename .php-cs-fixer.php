@@ -7,5 +7,5 @@ return PhpCsFixerConfig\Factory::createForProject()
         PhpCsFixer\Finder::create()
             ->files()
             ->in(__DIR__)
-            ->append([__FILE__]),
+            ->append([__DIR__ . '/board', __FILE__]),
     );

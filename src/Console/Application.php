@@ -1,0 +1,24 @@
+<?php declare(strict_types=1);
+
+namespace App\Console;
+
+use App\Board\BoardManagerFactory;
+use Symfony\Component\Console\Application as SymfonyApplication;
+use Symfony\Component\Console\Command\ListCommand;
+
+final class Application extends SymfonyApplication
+{
+    public function __construct()
+    {
+        parent::__construct('Live Football World Cup Score Board', 'dev');
+
+        $boardManager = (new BoardManagerFactory())->create();
+
+        $this->add(new SummaryCommand($boardManager));
+    }
+
+    protected function getDefaultCommands(): array
+    {
+        return [new ListCommand()];
+    }
+}
