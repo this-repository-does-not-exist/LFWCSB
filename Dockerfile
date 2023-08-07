@@ -4,3 +4,8 @@ RUN apk --no-cache add pcre-dev ${PHPIZE_DEPS} \
     && pecl install redis \
     && docker-php-ext-enable redis
 WORKDIR /app
+
+
+FROM redis:7.0-alpine as redis
+CMD [ "redis-server" ]
+EXPOSE 6379

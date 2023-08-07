@@ -8,3 +8,17 @@ services:
     tty: true
     volumes:
       - .:/app/
+    networks:
+      - ntwrk
+
+  redis:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: redis
+    networks:
+      - ntwrk
+
+networks:
+  ntwrk:
+    driver: bridge
