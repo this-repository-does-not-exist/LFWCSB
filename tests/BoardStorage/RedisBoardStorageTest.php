@@ -13,7 +13,7 @@ final class RedisBoardStorageTest extends BoardStorageTestCase
     public function getBoardStorage(): BoardStorage
     {
         $redis = new \Redis();
-        $redis->connect('redis', 6379);
+        $redis->connect('127.0.0.1', 6379);
 
         $redis->unlink('board_test');
 
