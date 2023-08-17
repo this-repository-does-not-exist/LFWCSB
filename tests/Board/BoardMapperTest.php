@@ -33,7 +33,7 @@ final class BoardMapperTest extends TestCase
         self::assertArrayHasKeyWithValue($boardArray, 1, GameMapper::toArray($games[1]));
         self::assertArrayHasKeyWithValue($boardArray, 2, GameMapper::toArray($games[2]));
 
-        $boardMapped = BoardMapper::formArray($boardArray);
+        $boardMapped = BoardMapper::fromArray($boardArray);
 
         self::assertSame(
             \serialize($games),
@@ -54,7 +54,7 @@ final class BoardMapperTest extends TestCase
             $games,
         );
 
-        $boardMapped = BoardMapper::formArray($board);
+        $boardMapped = BoardMapper::fromArray($board);
 
         self::assertSame(
             \serialize($games),

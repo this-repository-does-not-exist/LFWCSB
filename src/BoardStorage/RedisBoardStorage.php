@@ -36,6 +36,6 @@ final readonly class RedisBoardStorage implements BoardStorage
         /** @var array<int, array{homeTeam: string, awayTeam: string, homeTeamScore: int, awayTeamScore: int}> $data */
         $data = \json_decode($cachedValue, true);
 
-        return BoardMapper::formArray($data);
+        return BoardMapper::fromArray($data);
     }
 }

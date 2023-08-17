@@ -24,7 +24,7 @@ final class GameMapperTest extends TestCase
         self::assertArrayHasKeyWithValue($gameArray, 'homeTeamScore', 0);
         self::assertArrayHasKeyWithValue($gameArray, 'awayTeamScore', 3);
 
-        $gameMapped = GameMapper::formArray($gameArray);
+        $gameMapped = GameMapper::fromArray($gameArray);
 
         self::assertSame('Arg', $gameMapped->homeTeam());
         self::assertSame('Bra', $gameMapped->awayTeam());
@@ -41,7 +41,7 @@ final class GameMapperTest extends TestCase
             'awayTeamScore' => 7,
         ];
 
-        $gameMapped = GameMapper::formArray($game);
+        $gameMapped = GameMapper::fromArray($game);
 
         self::assertSame('Aus', $gameMapped->homeTeam());
         self::assertSame('Bol', $gameMapped->awayTeam());

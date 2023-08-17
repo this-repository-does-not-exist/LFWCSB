@@ -20,7 +20,7 @@ final readonly class GameMapper
     /**
      * @param array{homeTeam: string, awayTeam: string, homeTeamScore: int, awayTeamScore: int} $data
      */
-    public static function formArray(array $data): Game
+    public static function fromArray(array $data): Game
     {
         return new Game(
             $data['homeTeam'],

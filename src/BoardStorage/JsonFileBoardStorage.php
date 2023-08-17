@@ -34,6 +34,6 @@ final readonly class JsonFileBoardStorage implements BoardStorage
         /** @var array<int, array{homeTeam: string, awayTeam: string, homeTeamScore: int, awayTeamScore: int}> $data */
         $data = \json_decode($content, true);
 
-        return BoardMapper::formArray($data);
+        return BoardMapper::fromArray($data);
     }
 }

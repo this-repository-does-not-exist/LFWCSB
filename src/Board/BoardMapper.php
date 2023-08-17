@@ -21,12 +21,12 @@ final readonly class BoardMapper
     /**
      * @param array<int, array{homeTeam: string, awayTeam: string, homeTeamScore: int, awayTeamScore: int}> $gamesData
      */
-    public static function formArray(array $gamesData): Board
+    public static function fromArray(array $gamesData): Board
     {
         $board = new Board();
 
         foreach ($gamesData as $gameData) {
-            $board->addGame(GameMapper::formArray($gameData));
+            $board->addGame(GameMapper::fromArray($gameData));
         }
 
         return $board;
